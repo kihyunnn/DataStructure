@@ -31,6 +31,11 @@ def main():
         #                        #
         #                        #
         ##########################
+    stack1.push(geonmo)
+    stack1.push(moyang)
+    stack1.push(geonyang)
+    stack2.push(stack1.pop())
+    stack2.push(stack1.pop())
     
     stack1.display()
     stack2.display()
