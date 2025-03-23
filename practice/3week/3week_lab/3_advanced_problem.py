@@ -43,21 +43,28 @@ def main():
     
     ## Food 데이터를 임시 저장하기 위한.
     c = Food()
+   
+    # 그냥 여기서 반복문으로 time에 누적을 넣어버리자
+    for i in range(stack_a.top):
+        for j in range(1,i+1):
+            stack_a.data[i].time += stack_a.data[j].time
+            
+            
     
     ## 두 스택이 모두 비워지지 않았을 때까지 반복
-    while not (###  block  ###): 
+    while not (stack_a.isEmpty() or stack_b.isEmpty): 
         ## 한 쪽 식당의 음식의 조리가 모두 끝났다면, 다른 식당의 음식만 순서대로 나오면 됨.
         if stack_b.isEmpty():
-            stack_result.push(###  block  ###)
+            stack_result.push(stack_a.pop())
         elif stack_a.isEmpty():
-            stack_result.push(###  block  ###)
+            stack_result.push(stack_b.pop())
         
         ## 두 식당 모두 음식 조리가 끝나지 않았다면,
         else:
             ## 각 식당에서 지금 나와야 할 두 음식 중 누가 먼저 나오나?
             if stack_a.peek().time <= ###  block  ###: ## a 식당의 음식이 먼저 나온다면,
                 c = stack_b.pop()
-                stack_b.push(Food(c.name, (###  block  ###)))
+                stack_b.push(Food(c.name, ()))
                 stack_result.push(###  block  ###)
             else:                                      ## b 식당의 음식이 먼저 나온다면,
                 c = stack_a.pop()
