@@ -9,7 +9,7 @@ from FoodStack import Food
     	stack_b : B 식당의 밀린 주문 리스트
     	stack_result : A,B 식당에서 조리 후 나오는 음식들의 순서를 저장할 스택
     
-    ex) 아래와 같은 주문 리스트가 있을 때, A식당 음식 리스트에 대하여 Food_a0라는 음식이 나오는데 걸리는 시간은 10분이며, 
+    ex) 아래와 같은 주문 리스트가 있1을 때, A식당 음식 리스트에 대하여 Food_a0라는 음식이 나오는데 걸리는 시간은 10분이며, 
     	Food_a1의 음식이 나오는데 걸리는 시간은 10분이 지난 17분이다(10+7). 그리고 Fodd_a2 음식이 나오는 데 걸리는 시간은
     	29분(10 + 7 + 12)이다. B식당의 리스트도 이와 같은 원리이다.
     	이러한 스택 구조의 주문 리스트가 있을 때, 결과 출력은 다음과 같다. 
@@ -46,13 +46,21 @@ def main():
    
     # 그냥 여기서 반복문으로 time에 누적을 넣어버리자
     for i in range(stack_a.top):
-        for j in range(1,i+1):
-            stack_a.data[i].time += stack_a.data[j].time
+        for j in range(stack_a.top):
+            if j>i:
+                stack_a.food[i].time += stack_a.food[j].time
+        print("디버깅 메시지 :stack_a[",i,"].time = ",stack_a.food[i].time)
+
+    for i in range(stack_b.top):
+        for j in range(stack_b.top):
+            if j>i:
+                stack_b.food[i].time += stack_b.food[j].time
+        print("디버깅 메시지 :stack_b[",i,"].time = ",stack_b.food[i].time)
             
             
     
     ## 두 스택이 모두 비워지지 않았을 때까지 반복
-    while not (stack_a.isEmpty() or stack_b.isEmpty): 
+    while not (stack_a.isEmpty() and stack_b.isEmpty): 
         ## 한 쪽 식당의 음식의 조리가 모두 끝났다면, 다른 식당의 음식만 순서대로 나오면 됨.
         if stack_b.isEmpty():
             stack_result.push(stack_a.pop())
@@ -62,14 +70,21 @@ def main():
         ## 두 식당 모두 음식 조리가 끝나지 않았다면,
         else:
             ## 각 식당에서 지금 나와야 할 두 음식 중 누가 먼저 나오나?
-            if stack_a.peek().time <= ###  block  ###: ## a 식당의 음식이 먼저 나온다면,
+            if stack_a.peek().time <= stack_b.peek().time: ###  block  ###: ## a 식당의 음식이 먼저 나온다면
+                print("-----a가 b보다 빨리 나올 때-----")
                 c = stack_b.pop()
-                stack_b.push(Food(c.name, ()))
-                stack_result.push(###  block  ###)
+                stack_b.push(Food(c.name, ())) 이 코드가 왜 있는지 이유를 이해 못했습니다.
+                stack_result.push(c)
             else:                                      ## b 식당의 음식이 먼저 나온다면,
+                print("----b가 a보다 빨리 나올 때-----")
                 c = stack_a.pop()
-                stack_a.push(Food(c.name, (###  block  ###)))
-                stack_result.push(###  block  ###)
+                                # Python cache files
+                __pycache__/
+                *.py[cod]
+                *$py.classstack_a.push(Food(c.name, ())) 시간이 초기화 되고, a를 뺐다가 다시 넣는건데 완전히 비워질려면 없어져야하는거 아닌가..?
+                stack_result.push(c)
+            
+            
     
     stack_result.display()
     
