@@ -21,7 +21,7 @@ from TableFood import TableFood
         각 문제에서 원하는 구현이 되도록 모든 block을 채워 넣어라.
 '''
 
-def totaltime_list(list: CookListDeque):
+def totaltime_list(list: CookListDeque): 
     sum = 0 
     
     ''' 2.1) front와 rear를 초기화 시키시오. (hint: CookListDeque.py)'''

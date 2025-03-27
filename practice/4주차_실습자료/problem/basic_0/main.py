@@ -29,6 +29,16 @@ def main():
     #                                              #
     #                                              #
     ################################################
+    que.dequeue()
+    que.dequeue()
+    que.enqueue(10)
+    que.enqueue(11)
+    que.enqueue(12)
+
+    que.enqueue(13)
+    que.enqueue(14)
+    
+    
     
     que.display()
     
