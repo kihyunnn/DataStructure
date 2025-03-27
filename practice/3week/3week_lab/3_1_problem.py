@@ -24,13 +24,7 @@ def main():
     
     
     ##  1) explain.png에서 보여지는 알고리즘을 구현하시오. 
-        ##########################
-        #                        #
-        #                        #
-        #          block         #
-        #                        #
-        #                        #
-        ##########################
+
     stack1.push(geonmo)
     stack1.push(moyang)
     stack1.push(geonyang)
