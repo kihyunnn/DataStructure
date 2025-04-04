@@ -37,23 +37,23 @@ class LinkedQueue:
         if self.isEmpty():
             return None
         elif num == 1:
-            self.front = ## block ##
+            self.front = self.front.getLink() ## block ##
         ## 1.2) for문을 통해 num번째 노드의 Node를 찾는다.
         else:
-            for i in range(## block ##):
+            for i in range(num-1):## block ##):
                 temp_before = temp
-                temp = ## block ##
+                temp = temp.getLink()## block ##
             if temp == None:
                 print("index is over.")
                 return temp
             
             ## 1.3) dequeue될 노드를 고려하여, 큐 링크들 재수정.
-            temp_before.setLink(## block ##)
+            temp_before.setLink(temp.getLink())
             
         if self.front == None:
             self.rear = None
             
-        return ## block ##
+        return temp ## block ##
         
     def peek(self):
         return self.front
