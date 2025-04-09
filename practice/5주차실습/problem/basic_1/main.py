@@ -21,6 +21,18 @@ def main():
     #                                              #
     #                                              #
     ################################################
+    student_data = [
+    (22221354 ,"양건모","전자공학과"),
+    (22221355 ,"최지원","전기공학과"),
+    (22221356 ,"최병희","철학과"),
+    (22221357 ,"인뇽이","컴퓨터공학과"),
+    (22221358 ,"인덕이","기계공학과")
+    ]
+
+    for data in student_data:
+        s = Node(*data)  
+        stack.push(s)
+
     stack.display()
     
     ## 1.5) 최종적으로 스택의 데이터 구조과 다음과 같이 될 수 있도록 코드를 구현하여라.
@@ -41,6 +53,17 @@ def main():
     #                    block                     #
     #                                              #
     ################################################
+    student_data2 = [
+    (22231396 ,"하텍이1 ","new1 학과"),
+    (22231397 ,"하텍이2 ","new2 학과"),
+    (22231398 ,"하텍이3","new3 학과  ")
+    ]
+    s = Node(*student_data2[2])
+    stack.num_push(s,5)
+    s = Node(*student_data2[1])
+    stack.num_push(s,4)
+    s = Node(*student_data2[0])
+    stack.num_push(s,3)
     stack.display()
     
 

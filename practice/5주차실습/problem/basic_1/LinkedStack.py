@@ -28,19 +28,23 @@ class LinkedStack:
             ################################################
             #                    block                     #
             ################################################
+            n.next = temp
+            self.top = n
+            return n
         ## 1.2) for문을 통해 num번째 노드 Node를 찾는다.
+        
         else:
-            for i in range(## block ##):
+            for i in range(num - 1):
                 temp_before = temp
-                temp = ## block ##
+                temp = temp.next
                 
                 if temp == None:
                     print("index is over.")
                     break
             
             ## 1.3) push될 노드를 고려하여, 스택 링크들 재수정.
-            temp_before.## block ##
-            n.## block ##
+            temp_before.next = n
+            n.next = temp            
     
     def pop(self):
         if self.isEmpty():
