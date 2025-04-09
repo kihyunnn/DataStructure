@@ -20,7 +20,7 @@ def totaltime_list(que: LinkedQueue):
     
     ## 3.3) 리스트에서의 조리되어야 하는 각 음식들의 현재 time들을 각 음식들의 조리가 완료되는 total time으로 업데이트 하여라. 
     while temp != None:
-        sum += ## block ##
+        sum += que.data.## block ##
         temp.data.totaltime = sum
         temp = ## block ##
         
