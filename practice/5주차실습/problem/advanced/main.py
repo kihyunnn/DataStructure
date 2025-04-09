@@ -20,31 +20,32 @@ def totaltime_list(que: LinkedQueue):
     
     ## 3.3) 리스트에서의 조리되어야 하는 각 음식들의 현재 time들을 각 음식들의 조리가 완료되는 total time으로 업데이트 하여라. 
     while temp != None:
-        sum += que.data.## block ##
+        sum += temp.data.totaltime## block ##
         temp.data.totaltime = sum
-        temp = ## block ##
+        temp = temp.getLink()## block ##
         
 def delete_foodlist(que: LinkedQueue, num: int):
     deletefood_time = None # 이번에 제거하고자 하는 음식의 조리완료까지 걸리는 totaltime
     
     ## 3.4) delete_food : 이번에 제거 하고자 하는 음식
-    delete_food = ## block ##
+    delete_food = que.num_dequeue(num)## block ##
     
     ## temp : 현재 조리리스트에서 delete_food 이후로 조리 완료되는 음식들의 totaltime 조정을 위한.
     temp = que.num_peek(num).getLink()
     
     ## 3.5) 이번에 제거 하고자 하는 음식이 "food_a"이면 ~
-    if delete_food.data.foodname == ## block ##:
+    if delete_food.data.foodname == "food_a" :## block ##:
         deletefood_time = 8
-    elif delete_food.data.foodname == ## block ##:
+    elif delete_food.data.foodname == "food_b":## block ##:
         deletefood_time = 12
-    elif delete_food.data.foodname == ## block ##:
+    elif delete_food.data.foodname == "food_c":## block ##:
         deletefood_time = 9
     
     ## 3.6) delete_food가 제거된다면, delete_food 이후로 조리 완료되는 
     ## 음식들은 totaltime을 delete_food가 조리되는 시간만큼빼줘야한다.
     while temp != None:
         ## block ##
+        temp.data.totaltime -= deletefood_time
         temp = temp.getLink() 
     
     ## block ##
@@ -61,7 +62,29 @@ def main():
     ##  table_num: < 2> / foodname: <food_c> / time: < 9> 
     ##  table_num: < 4> / foodname: <food_a> / time: < 8> 
     ##  table_num: < 4> / foodname: <food_b> / time: <12>
+    food1 = TableFood(1, "food_a", 8)
+    node1 = Node(food1)
+    cooklist.enqueue(node1)
     
+    food2 = TableFood(1, "food_b", 12)
+    node2 = Node(food2)
+    cooklist.enqueue(node2)
+    
+    food3 = TableFood(3, "food_a", 8)
+    node3 = Node(food3)
+    cooklist.enqueue(node3)
+    
+    food4 = TableFood(2, "food_c", 9)
+    node4 = Node(food4)
+    cooklist.enqueue(node4)
+    
+    food5 = TableFood(4, "food_a", 8)
+    node5 = Node(food5)
+    cooklist.enqueue(node5)
+    
+    food6 = TableFood(4, "food_b", 12)
+    node6 = Node(food6)
+    cooklist.enqueue(node6)
     ################################################
     #                                              #
     #                                              #
@@ -83,6 +106,7 @@ def main():
     
     totaltime_list(cooklist)
     ## block ##
+    delete_foodlist(cooklist, 2)
     cooklist.display()
     
 if __name__ == "__main__":
