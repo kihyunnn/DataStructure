@@ -14,14 +14,14 @@ def main():
     ## 삽입 연산 테스트
 	## 2.1) 아래와 같은 출력이 나올 수 있도록 block을 채우시오.
     tree.insert(BinaryNode(35))
-    tree.insert(BinaryNode(''' block '''))
+    tree.insert(BinaryNode(18))
     tree.insert(BinaryNode(7))
-    tree.insert(BinaryNode(''' block '''))
+    tree.insert(BinaryNode(3))
     tree.insert(BinaryNode(12))
-    tree.insert(BinaryNode(''' block '''))
+    tree.insert(BinaryNode(26))
     tree.insert(BinaryNode(68))
-    tree.insert(BinaryNode(''' block '''))
-    tree.insert(BinaryNode(''' block '''))
+    tree.insert(BinaryNode(22))
+    tree.insert(BinaryNode(30))
     tree.insert(BinaryNode(99))
     
     tree.inorder()
@@ -37,7 +37,9 @@ def main():
     print(f"노드의 개수 = {tree.getCount()}")
     print(f"단말의 개수 = {tree.getLeafCount()}")
     print(f"트리의 높이 = {tree.getHeight()}")
-    
+    # 검색하는거 없어서 추가 
+    tree.search(26)
+    tree.search(25)
     ## 삭제 연산 테스트
     print("삭제: case 1 ==> 노드 3 삭제")
     tree.remove(3)

@@ -22,31 +22,31 @@ class BinaryTree:
         if node == None:
             return 0
         ## 1.2) block을 채우시오.
-        return 1 + ''' block ''' + ''' block '''
+        return 1 + self.getCount_(node.getLeft()) + self.getCount_(node.getRight())
     
     ## 오른쪽 자식 노드를 가지는 노드들의 갯수를 알아내는 함수
     def getRightCount_(self, node: BinaryNode)->int:
         if node == None:
             return 0
         ## 1.3) block을 채우시오.
-        if ''' block ''': # 오른쪽 자식 노드가 있으면
-            return 1 + self.getRightCount_(''' block ''') + self.getRightCount_(''' block ''')
-        return self.getRightCount_(''' block ''') + self.getRightCount_(''' block ''')
+        if node.getRight() is not None: # 오른쪽 자식 노드가 있으면
+            return 1 + self.getRightCount_(node.getLeft()) + self.getRightCount_(node.getRight())
+        return self.getRightCount_(node.getLeft()) + self.getRightCount_(node.getRight())
     def getLeafCount_(self, node: BinaryNode)->int:
         if node == None:
             return 0
         ## 1.4) block을 채우시오.
-        if ''' block ''': # 자식 노드가 없으면
+        if node.isLeaf(): # 자식 노드가 없으면
             return 1
         else:
-            return ''' block ''' + ''' block '''
+            return self.getLeafCount_(node.getLeft()) + self.getLeafCount_(node.getRight())
     def getHeight_(self, node: BinaryNode)->int:
         if node == None:
             return 0
         ## 1.5) block을 채우시오.
-        hLeft = ''' block '''
-        hRight = ''' block '''
-        return hLeft+1 if ''' block ''' else ''' block '''
+        hLeft = self.getHeight_(node.getLeft())
+        hRight = self.getHeight_(node.getRight())
+        return hLeft+1 if hLeft > hRight else hRight+1
     def inorder(self):
         print("\ninorder: ", end='')
         self.inorder_(self.root)
@@ -95,7 +95,7 @@ class BinaryTree:
     def calcSize_(self, node: BinaryNode)->int:
         if node == None:
             return 0
-        return ''' block ''' + self.calcSize_(node.getLeft()) + self.calcSize_(node.getRight())
+        return node.getData() + self.calcSize_(node.getLeft()) + self.calcSize_(node.getRight())
     ## 수식 계산 함수
     def evaluate(self)->int:
         return self.evaluate_(self.root)
@@ -103,18 +103,18 @@ class BinaryTree:
         if node == None:
             return 0
         ## 1.7) block을 채우시오.
-        if ''' block ''': # 자식 노드가 없으면
+        if node.isLeaf(): # 자식 노드가 없으면
             return node.getData()*node.getData()
         else:
             op1 = self.evaluate_(node.getLeft())
             op2 = self.evaluate_(node.getRight())
             
             if node.getData() == '+':
-                return ''' block '''
+                return op1 + op2
             elif node.getData() == '-':
-                return ''' block '''
+                return op1 - op2
             elif node.getData() == '*':
-                return ''' block '''
+                return op1 * op2
             elif node.getData() == '/':
-                return ''' block '''
+                return op1 / op2
             return 0

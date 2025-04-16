@@ -20,22 +20,22 @@ class BinaryTree:
         if node == None:
             return 0
         ## 1.2) block을 채우시오.
-        return 1 + ''' block ''' + ''' block '''
+        return 1 + self.getCount_(node.getLeft()) + self.getCount_(node.getRight())
     def getLeafCount_(self, node: BinaryNode)->int:
         if node == None:
             return 0
         ## 1.4) block을 채우시오.
-        if ''' block ''': # 자식 노드가 없으면
+        if node.getLeft() == None and node.getRight() == None: # 자식 노드가 없으면
             return 1
         else:
-            return ''' block ''' + ''' block '''
+            return self.getLeafCount_(node.getLeft()) + self.getLeafCount_(node.getRight())
     def getHeight_(self, node: BinaryNode)->int:
         if node == None:
             return 0
         ## 1.5) block을 채우시오.
-        hLeft = ''' block '''
-        hRight = ''' block '''
-        return hLeft+1 if ''' block ''' else ''' block '''
+        hLeft = self.getHeight_(node.getLeft())
+        hRight = self.getHeight_(node.getRight())
+        return hLeft+1 if hLeft > hRight else hRight+1
     def inorder(self):
         print("\ninorder: ", end='')
         self.inorder_(self.root)

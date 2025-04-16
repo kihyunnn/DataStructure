@@ -17,9 +17,9 @@ class BinSrchTree(BinaryTree):
         if key == n.getData():
             return n
         elif key < n.getData():
-            return self.search_(''' block ''', ''' block ''')
+            return self.search_(n.getLeft(), key)  
         else:
-            return self.search_(''' block ''', ''' block ''')
+            return self.search_(n.getRight(), key)  
     
     def insert(self, n: BinaryNode):
         if n == None:
@@ -31,18 +31,18 @@ class BinSrchTree(BinaryTree):
     
     ## 2.3) key를 삽입하는 함수를 구현하시오.
     def insert_(self, r: BinaryNode, n: BinaryNode):
-        if n.getData() == ''' block ''':
+        if n.getData() == r.getData():  
             return
         elif n.getData() < r.getData():
             if r.getLeft() == None:
                 r.setLeft(n)
             else:
-                self.insert_(''' block ''', ''' block ''')
+                self.insert_(r.getLeft(), n)
         else:
             if r.getRight() == None:
                 r.setRight(n)
             else:
-                self.insert_(''' block ''', ''' block ''')
+                self.insert_(r.getRight(), n)
     
     def remove(self, data: int):
         if self.isEmpty():
@@ -64,7 +64,7 @@ class BinSrchTree(BinaryTree):
             if parent == None:
                 self.root = None
             else:
-                if ''' block ''' == node:
+                if parent.getLeft() == node:
                     parent.setLeft(None)
                 else:
                     parent.setRight(None)
@@ -72,22 +72,22 @@ class BinSrchTree(BinaryTree):
         elif node.getLeft() == None or node.getRight() == None:
             child = node.getLeft() if node.getLeft() != None else node.getRight()
             if node == self.root:
-                self.root = ''' block '''
+                self.root = child
             else:
-                if ''' block ''' == node:
+                if parent.getLeft() == node:
                     parent.setLeft(child)
                 else:
                     parent.setRight(child)
         ## case 3
         else:
             succp = node
-            succ = ''' block '''
+            succ = node.getRight()
             while succ.getLeft() != None:
                 succp = succ
-                succ = ''' block '''
+                succ = succ.getLeft()
             if succp.getLeft() == succ:
-                succp.setLeft(''' block ''')
+                succp.setLeft(succ.getRight())
             else:
-                succp.setRight(''' block ''')
-            node.setData(''' block ''')
+                succp.setRight(succ.getRight())
+            node.setData(succ.getData())
             node = succ

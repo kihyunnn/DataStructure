@@ -19,4 +19,4 @@ class BinaryNode:
         return self.right
     ## 1.1) isLeaf는 자식 노드가 없을 때 1을 반환하는 함수이다. block을 채워라.
     def isLeaf(self):
-        return ''' block ''' and ''' block '''
+        return self.left is None and self.right is None
