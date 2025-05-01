@@ -34,14 +34,14 @@ def insertion_sort(arr):
         j = i - 1
         # key보다 큰 요소를 뒤로 이동시키는 조건 구현
         while j >= 0 and key<arr[j]:
-            arr[j+1] = arr[j]
-            j -=1
+            arr[j+1] = arr[j] # 한칸 오른쪽으로 밀고
+            j -=1 #이제 더 왼쪽으로 한칸 가서 비교해야됨
 
             ########################################
             #                block                 #
             ########################################
         # key 삽입 구문 구현
-        arr[j+1] = key
+        arr[j+1] = key # key 삽입
         ''' block '''
     return arr
 
