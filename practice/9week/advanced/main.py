@@ -59,21 +59,23 @@ def insertion_sort(arr):
     return arr
 
 
-# def frequency_based_selection_sort(arr):
-#     freq = frequency_calculation(arr)
-#     n = len(arr)
-#     # i가 0부터 n-1까지 순회하도록 range 완성
-#     for i in range(''' block '''):
-#         best = i
-#         # j가 i+1부터 n-1까지 순회하도록 range 완성
-#         for j in range(''' block '''):
-#             # 빈도 내림차순 우선 · 값 오름차순 조건 기준으로 best 갱신 로직 구현
-#             ########################################
-#             #                block                 #
-#             ########################################
-#         # 스왑 구문 구현
-#         ''' block '''
-#     return arr
+def frequency_based_selection_sort(arr):
+    freq = frequency_calculation(arr)
+    n = len(arr)
+    # i가 0부터 n-1까지 순회하도록 range 완성
+    for i in range(n-1):
+        best = i
+        # j가 i+1부터 n-1까지 순회하도록 range 완성
+        for j in range(i+1,n-1):
+            if freq(arr[best]) <= freq(arr[j]):
+                 
+            # 빈도 내림차순 우선 · 값 오름차순 조건 기준으로 best 갱신 로직 구현
+            ########################################
+            #                block                 #
+            ########################################
+        # 스왑 구문 구현
+        ''' block '''
+    return arr
 
 # def frequency_based_insertion_sort(arr):
 #     freq = frequency_calculation(arr)
