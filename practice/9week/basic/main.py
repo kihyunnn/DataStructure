@@ -16,30 +16,22 @@ def selection_sort(arr):
             if(arr[j]<arr[min_idx]):
                 min_idx = j
             # 최소값 인덱스 갱신 로직 구현
-            ########################################
-            #                block                 #
-            ########################################
         # 스왑(swap) 구문 구현
         temp = arr[min_idx]
         arr[min_idx] = arr[i]
         arr[i] = temp
-        ''' block '''
     return arr
 
 def insertion_sort(arr):
     n = len(arr)
     # i가 1부터 n-1까지 순회하도록 range 완성
-    for i in range(1,n-1):
+    for i in range(1,n):
         key = arr[i]
         j = i - 1
         # key보다 큰 요소를 뒤로 이동시키는 조건 구현
         while j >= 0 and key<arr[j]:
             arr[j+1] = arr[j] # 한칸 오른쪽으로 밀고
             j -=1 #이제 더 왼쪽으로 한칸 가서 비교해야됨
-
-            ########################################
-            #                block                 #
-            ########################################
         # key 삽입 구문 구현
         arr[j+1] = key # key 삽입
         ''' block '''
