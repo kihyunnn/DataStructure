@@ -20,10 +20,12 @@ class AVLTree:
     def balance_factor(self, node):
         if not node:
             return 0
+        else:
+            b_f = self.height(node.left) - self.height(node.right)
         '''
             [1.1] balance_factor() 함수를 완성하라.
         '''
-        return ## block ##
+        return b_f
     '''
         [1.2] rotate_right() 함수와 rotate_left() 함수를 완성하라.
     '''
