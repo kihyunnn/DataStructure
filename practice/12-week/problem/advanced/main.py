@@ -42,14 +42,14 @@ class AVLTree:
     def rebalance(self, node):
         self.update_height(node)
         balance = self.balance_factor(node)
-        if balance > 1:
-            if self.balance_factor(______) < 0:
-                ______ = ___________
-            return ______________________
-        if balance < -1:
-            if self.balance_factor(______) > 0:
-                ______ = ____________
-            return ______________________
+        if balance > 1: #LR 이거나 LL임
+            if self.balance_factor(node.left) < 0: #LR인경우
+                node.left = self.rotate_left(node.left) #중간노드 좌회전
+            return self.rotate_right(node) #루트노드 우회전
+        if balance < -1: # RR이거나 RL임
+            if self.balance_factor(node.right) > 0: #RL인경우
+                node.right = self.rotate_right(node.right) #중간노드 우회전
+            return self.rotate_left(node) #루트노드 좌회전
         return node
 
     def _insert(self, node, key):
@@ -120,6 +120,7 @@ def count_leaves(node: AVLNode) -> int:
     [2] merge_avl() 함수를 완성하라. 
 '''
 def merge_avl(tree1: AVLTree, tree2: AVLTree) -> AVLTree:
+    #이건 tree1의 모든 값이 tree2보다 작다는 것을 가정한건가??
     if not tree1.root:
         return tree2
     if not tree2.root:
@@ -127,18 +128,18 @@ def merge_avl(tree1: AVLTree, tree2: AVLTree) -> AVLTree:
 
     node = tree1.root
     while node.right:
-        node = node.right
-    max_key = ____
+        node = node.right #이게 끝나면 node에는 트리1의 가장 큰 노드가 들어가네
+    max_key = node.key
 
-    tree1.delete(____)
+    tree1.delete(max_key)
 
-    new_root = AVLNode(____)
-    new_root.left  = ____
-    new_root.right = ____
+    new_root = AVLNode(max_key)
+    new_root.left  = tree1.root
+    new_root.right = tree2.root
 
     new_tree = AVLTree()
     new_tree.root = new_root
-    new_tree.root = new_tree.rebalance(____)
+    new_tree.root = new_tree.rebalance(new_tree.root)
 
     return new_tree
 
@@ -151,8 +152,8 @@ def split_avl(tree: AVLTree, key: int) -> Tuple[AVLTree, AVLTree]:
         if not node:
             return None, None
 
-        if node.key <= key:
-            left_sub, right_sub = _split(____, ____)
+        if node.key <= key: # 이 노드는 왼쪽 트리에 포함
+            left_sub, right_sub = _split(node.right, key)
             node.right = ____
             node = tree.rebalance(node)
             return node, right_sub
