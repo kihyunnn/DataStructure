@@ -154,16 +154,16 @@ def split_avl(tree: AVLTree, key: int) -> Tuple[AVLTree, AVLTree]:
 
         if node.key <= key: # 이 노드는 왼쪽 트리에 포함
             left_sub, right_sub = _split(node.right, key)
-            node.right = ____
+            node.right = left_sub
             node = tree.rebalance(node)
             return node, right_sub
-        else:
-            left_sub, right_sub = _split(____, ____)
-            node.left = ____
+        else: #노드가 key보다 크면
+            left_sub, right_sub = _split(node.left,key)
+            node.left = right_sub
             node = tree.rebalance(node)
             return left_sub, node
 
-    left_root, right_root = _split(____, ____)
+    left_root, right_root = _split(tree.root,key)
     left_tree, right_tree = AVLTree(), AVLTree()
     left_tree.root, right_tree.root = left_root, right_root
     return left_tree, right_tree
