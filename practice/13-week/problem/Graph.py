@@ -9,11 +9,12 @@ class UndiretedGraph:
 
     def add_edge(self, v1, v2):
         if v1 not in self.adj_list:
-            self.adj_list[v1][v2] = 1
+            self.add_vertex(v1)
         if v2 not in self.adj_list:
-            self.adj_list[v2][v2] = 1
+            self.add_vertex(v2)
         # v1과 v2를 연결 [Hint: 무방향 그래프이므로 양방향 추가]
-        #### block #####    
+        self.adj_list[v1].append(v2)
+        self.adj_list[v2].append(v1)
 
     def print_graph(self):
         for vertex in self.adj_list:
@@ -30,10 +31,11 @@ class UndiretedGraph:
             for v in self.adj_list[u]:
                 i, j = index_map[u], index_map[v]
                 # 인접 행렬에서 (i,j), (j,i)에 1을 할당
-                #### block #####
+                matrix[i][j] = 1
+                matrix[j][i] = 1
 
         print("\n[Adjacency Matrix]")
-        print("  ", " ".join(vertices))
+        print(" ", " ".join(vertices))
         for i, row in enumerate(matrix):
             print(vertices[i], " ".join(str(x) for x in row))
 
@@ -53,7 +55,7 @@ class DiretedGraph:
         self.add_vertex(u)
         self.add_vertex(v)
         # u와 v를 연결 [Hint: 방향성은 u → v 이며, 간선에 가중치 포함]
-        #### block #####
+        self.adj_list[u].append((v, weight))
 
     def print_graph(self):
         for vertex in self.adj_list:
@@ -69,10 +71,11 @@ class DiretedGraph:
         for u in self.adj_list:
             for v, weight in self.adj_list[u]:
                 # u → v 방향에 가중치 설정 (matrix[i][j] = weight)
-                ## block ## 
+                i, j = index_map[u], index_map[v] 
+                matrix[i][j] = weight
 
         print("\n[Adjacency Matrix]")
-        print("  ", " ".join(vertices))
+        print(" ", " ".join(vertices))
         for i, row in enumerate(matrix):
             print(vertices[i], " ".join(str(x) for x in row))
 
